@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nummy/feature/auth/presentation/widgets/auth_button.dart';
 import 'package:nummy/feature/auth/presentation/widgets/auth_field.dart';
 import 'package:nummy/core/theme/app_palette.dart';
@@ -48,19 +49,26 @@ class _SignInScreenState extends State<SignInScreen> {
                 isObscuredText: true,
               ),
               AuthButton(onPress: () {}, buttonText: "Sign In"),
-              RichText(
-                text: TextSpan(
-                  text: "Don't have an account? ",
-                  style: Theme.of(context).textTheme.titleMedium,
-                  children: [
-                    TextSpan(
-                      text: "Sign Up",
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                        color: AppPalette.primaryColor,
-                        fontWeight: FontWeight.bold,
+              GestureDetector(
+                onTap: () {
+                  context.goNamed("sign_up");
+                },
+                child: RichText(
+                  text: TextSpan(
+                    text: "Don't have an account? ",
+                    style: Theme.of(context).textTheme.titleMedium,
+                    children: [
+                      TextSpan(
+                        text: "Sign Up",
+                        style: Theme.of(
+                          context,
+                        ).textTheme.titleMedium!.copyWith(
+                          color: AppPalette.primaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
